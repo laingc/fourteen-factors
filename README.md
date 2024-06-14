@@ -38,17 +38,17 @@ This project demonstrates a basic Flask web application that adheres to these en
 
 2. **Create a virtual environment:**
     ```sh
-    python3 -m venv venv_2024-06-14_12.factor.app.extension.example_
+    python3 -m venv venv
     ```
 
 3. **Activate the virtual environment:**
     - On macOS and Linux:
       ```sh
-      source venv_2024-06-14_12.factor.app.extension.example_/bin/activate
+      source venv
       ```
     - On Windows:
       ```sh
-      venv_2024-06-14_12.factor.app.extension.example_\Scripts\activate
+      venv
       ```
 
 4. **Install the dependencies:**
