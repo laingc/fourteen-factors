@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask + HTMX App</title>
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Item List</h1>
+    <ul id="item-list">
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <form id="add-item-form" hx-post="/add" hx-target="#item-list" hx-swap="beforeend">
+        <input type="text" name="item" placeholder="Add new item" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+        var socket = io();
+
+        // Listen for 'update' event from the server
+        socket.on('update', function(data) {
+            var itemList = document.getElementById('item-list');
+            itemList.innerHTML = '';
+            data.items.forEach(function(item) {
+                var li = document.createElement('li');
+                li.textContent = item;
+                itemList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
