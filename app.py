@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, jsonify, url_for
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'secret!' # In 12-factor, this should be read from environment
 socketio = SocketIO(app)
 
-# In-memory database
+# Very scalable database
 items = []
 
 @app.route('/')
